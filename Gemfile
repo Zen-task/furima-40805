@@ -10,7 +10,7 @@ gem "rails", "~> 7.0.0"
 gem "sprockets-rails"
 
 # Use mysql as the database for Active Record
-#gem "mysql2", "~> 0.5"
+gem "mysql2", "~> 0.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -72,7 +72,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg'# 本番環境ではPostgreSQLを使用
 end
 
 group :development do
