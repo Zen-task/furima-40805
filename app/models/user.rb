@@ -10,11 +10,11 @@ class User < ApplicationRecord
   validates :nickname, presence: true
 
   # メアド、@含有
-  validates :email, presence: true, uniqueness: true,
+  validates :email, uniqueness: true,
                     format: { with: /@/, message: 'は@を含む必要があります' }
 
   # パス必須6字以上、半角英数字混合
-  validates :password, presence: true, length: { minimum: 6 },
+  validates :password, length: { minimum: 6 },
                        format: { with: VALID_PASSWORD_REGEX, message: 'は半角英数字混合で入力してください' }
 
 validates :password_confirmation, presence: { message: 'を入力してください' }
