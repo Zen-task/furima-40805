@@ -1,11 +1,11 @@
-# app/models/user.rb
+# model
 class User < ApplicationRecord
   # Deviseのモジュール
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   # パス,バリデーション定義
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
 
   validates :nickname, presence: true
 
@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 },
                        format: { with: VALID_PASSWORD_REGEX, message: 'は半角英数字混合で入力してください' }
 
-validates :password_confirmation, presence: { message: 'を入力してください' }
+  validates :password_confirmation, presence: { message: 'を入力してください' }
 
   validates :last_name, presence: true,
                         format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'は全角（漢字・ひらがな・カタカナ）で入力してください' }
