@@ -7,9 +7,17 @@ class ApplicationController < ActionController::Base
   # Deviseのストロングパラメーターを設定
   def configure_permitted_parameters
     # サインアップ時に許可するパラメーターを指定
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :email, :password, :password_confirmation, :last_name, :first_name, :last_name_kana, :first_name_kana, :birth_date])
-    
+    devise_parameter_sanitizer.permit(:sign_up,
+                                      keys: [
+                                        :nickname, :email, :password, :password_confirmation,
+                                        :last_name, :first_name, :last_name_kana, :first_name_kana, :birth_date
+                                      ])
+  
     # アカウント更新時に許可するパラメーターを指定
-    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :email, :password, :password_confirmation, :current_password, :last_name, :first_name, :last_name_kana, :first_name_kana, :birth_date])
+    devise_parameter_sanitizer.permit(:account_update,
+                                      keys: [
+                                        :nickname, :email, :password, :password_confirmation, :current_password,
+                                        :last_name, :first_name, :last_name_kana, :first_name_kana, :birth_date
+                                      ])
   end
-end
+end  
