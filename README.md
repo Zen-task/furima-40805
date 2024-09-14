@@ -77,3 +77,5 @@
 - **Users と Orders**: 1対多の関係
 - **Items と Orders**: 1対1の関係
 - **Orders と Addresses**: 1対1の関係
+
+
