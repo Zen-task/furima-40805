@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   # ログインしているユーザーのみアクセス可能にする（オプション）
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :set_item, only: [:edit, :update, :show]
-  before_action :authorize_user, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_item, only: [:edit, :update, :show, :destroy]
+  before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def edit
   end
@@ -35,6 +35,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
+  end
+
   private
 
   def set_item
@@ -42,7 +50,7 @@ class ItemsController < ApplicationController
   end
 
   def authorize_user
-    return unless current_user != @item.user
+    return if current_user == @item.user
 
     redirect_to root_path
   end
