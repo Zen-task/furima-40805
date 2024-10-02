@@ -1,5 +1,8 @@
 # model
 class User < ApplicationRecord
+  has_many :items 
+  has_many :orders 
+  
   # Deviseのモジュール
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

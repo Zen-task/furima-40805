@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def edit
+    redirect_to root_path if @item.order.present?
   end
 
   def update
